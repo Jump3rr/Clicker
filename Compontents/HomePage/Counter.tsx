@@ -1,16 +1,9 @@
-import React, { FC, useEffect, Component } from "react";
+import React, { FC } from "react";
 import { Colors } from "../../styledHelpers/colors";
 import styled from "styled-components";
-// import { ClickCounter } from "./clickerCounter";
-// import { LevelUp } from "./clickerCounter";
-import { createStore } from "redux";
-import ClickCounter from "./clickerCounter";
-import { bindActionCreators } from "redux";
-import counterReducer from "../reducers/counterReducer";
-import { increaseCount, getCount } from "../../Actions/actionCounter";
 import { useSelector } from "react-redux";
-
-// export const store = createStore(counterReducer);
+import { IState } from "../reducers";
+import { ICounterReducer } from "../reducers/counterReducer";
 
 const CookieCounter = styled.div`
   width: 55%;
@@ -41,30 +34,15 @@ const Level = styled.div`
   display: block;
 `;
 
-// export const Counter: FC = () => {
-export class Counter extends Component {
-  static mapStateToProps = (state) => {
-    return {
-      count: state.count
-    };
-  };
-  static mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-      {
-        increaseCount,
-        getCount
-      },
-      dispatch
-    );
-  };
+export const Counter: FC = () => {
+  const { count } = useSelector<IState, ICounterReducer>((globalState) => ({
+    ...globalState.counter
+  }));
 
-  render() {
-    return (
-      <CookieCounter>
-        <Level>Level:</Level>
-        <ClickCounter />
-        <span></span>
-      </CookieCounter>
-    );
-  }
-}
+  return (
+    <CookieCounter>
+      <CounterDiv>Cookies: {count}</CounterDiv>
+      <Level>Level:</Level>
+    </CookieCounter>
+  );
+};

@@ -1,9 +1,9 @@
 import React, { FC, Component } from "react";
 import { Colors } from "../../styledHelpers/colors";
 import styled from "styled-components";
-// import { handleClick } from "./clickerCounter";
-import ClickCounter from "./clickerCounter";
 import { increaseCount } from "../../Actions/actionCounter";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
 const CookieContainer = styled.div`
   width: 40%;
@@ -33,15 +33,25 @@ const CookieImg = styled.img`
     transform: scale(0.8);
   }
 `;
-// const inc = () => {
-//   return (
-//     <ClickCounter onIncrement={() => store?.dispatch({ type: "INCREMENT" })} />
-//   );
-// };
 
 // export const Cookie: FC = () => {
-export class Cookie extends Component {
+class Cookie extends Component {
+  static mapStateToProps = (state) => {
+    return {
+      count: state.count
+    };
+  };
+  static mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(
+      {
+        increaseCount
+      },
+      dispatch
+    );
+  };
+
   render() {
+    const { increaseCount } = this.props;
     return (
       <CookieContainer>
         <CookieImg
@@ -53,3 +63,7 @@ export class Cookie extends Component {
     );
   }
 }
+export default connect(
+  Cookie.mapStateToProps,
+  Cookie.mapDispatchToProps
+)(Cookie);

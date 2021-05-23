@@ -1,8 +1,7 @@
 import { FC } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { TopBar } from "../NavBar/TopBar";
-import { Cookie } from "./cookie";
+import Cookie from "./cookie";
 import { Counter } from "./Counter";
 import styled from "styled-components";
 

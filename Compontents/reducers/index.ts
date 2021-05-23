@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 
-// import users, { IUsersReducer } from "./counterReducer";
+import counter, { ICounterReducer } from "./counterReducer";
 import achievements, { IAchievementsReducer } from "./achievementsReducer";
 
 export default combineReducers({
-  // users,
+  counter,
   achievements
 });
 
 export interface IState {
-  // users: IUsersReducer;
+  counter: ICounterReducer;
   achievements: IAchievementsReducer;
 }
