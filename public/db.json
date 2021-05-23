@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Welcome",
+    "description": "Click first cookie",
+    "required": 1,
+    "achieved": 0
+  },
+  {
+    "title": "TEN",
+    "description": "Reach 10 cookies",
+    "required": 10,
+    "achieved": 0
+  },
+  {
+    "title": "Blackjack",
+    "description": "Reach 21 cookies",
+    "required": 21,
+    "achieved": 0
+  },
+  {
+    "title": "Lewangoalski",
+    "description": "Reach 41 cookies",
+    "required": 41,
+    "achieved": 0
+  },
+  {
+    "title": "The 100",
+    "description": "Reach 100 cookies",
+    "required": 100,
+    "achieved": 0
+  },
+  {
+    "title": "Octet",
+    "description": "Reach 256 cookies",
+    "required": 256,
+    "achieved": 1
+  },
+  {
+    "title": "Real Spartan",
+    "description": "Reach 300 cookies",
+    "required": 300,
+    "achieved": 0
+  },
+  {
+    "title": "Millennium",
+    "description": "Reach 1000 cookies",
+    "required": 1000,
+    "achieved": 0
+  },
+  {
+    "title": "2^11",
+    "description": "Reach 2048 cookies",
+    "required": 2048,
+    "achieved": 0
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  },
+  {
+    "title": "tytul",
+    "description": "opis",
+    "required": 2,
+    "achieved": 1
+  }
+]
