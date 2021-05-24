@@ -55,8 +55,8 @@ const ResetButton = styled.button`
   border-color: white;
   color: white;
   font-weight: bold;
-  height: 15vh;
-  width: 15vh;
+  height: 12vh;
+  width: 12vh;
   &:hover {
     border-color: red;
     color: grey;
