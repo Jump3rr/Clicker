@@ -6,18 +6,22 @@ import { Achievements } from "../Compontents/Achievements/Achievements";
 import { Shop } from "../Compontents/Shop/Shop";
 import { useDispatch } from "react-redux";
 import { getAchievements } from "./../Actions/achievementsActions";
-import { increaseCount, getCount } from "./../Actions/actionCounter";
+import { increaseCount } from "./../Actions/actionCounter";
+import { levelUp } from "./../Actions/levelActions";
+import { increaseRequirement } from "./../Actions/requiredActions";
 
 type GetAchievements = ReturnType<typeof getAchievements>;
 type IncreaseCount = ReturnType<typeof increaseCount>;
-type GetCount = ReturnType<typeof getCount>;
+type LevelUp = ReturnType<typeof levelUp>;
+type IncreaseRequirement = ReturnType<typeof increaseRequirement>;
 
 export const MainPage: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<GetAchievements>(getAchievements());
     dispatch<IncreaseCount>(increaseCount());
-    dispatch<GetCount>(getCount());
+    dispatch<LevelUp>(levelUp());
+    dispatch<IncreaseRequirement>(increaseRequirement());
   }, []);
 
   return (

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Colors } from "../../styledHelpers/colors";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Bar = styled.div`
   background: ${Colors.lightblue};
@@ -17,7 +18,6 @@ const Logo = styled.img`
   order: 1;
 `;
 const Navs = styled.div`
-  color: ${Colors.white};
   order: 2;
   justify-content: center;
   align-items: center;
@@ -31,14 +31,37 @@ const Navs = styled.div`
     transform: translateY(40%);
   }
 `;
+const Urls = styled.div`
+  text-decoration: none;
+  display: inline-block;
+  color: ${Colors.white};
+  &:hover {
+    color: ${Colors.white};
+    text-decoration: underline;
+  }
+`;
 
 export const TopBar: FC = () => {
   return (
     <Bar>
-      <Logo src="../../icons/cookie.png" alt="Logo" />
-      <Navs>Home</Navs>
-      <Navs>Achievements</Navs>
-      <Navs>Shop</Navs>
+      <Link to="/">
+        <Logo src="../../icons/cookie.png" alt="Logo" />
+      </Link>
+      <Navs>
+        <Link to="/">
+          <Urls>Home</Urls>
+        </Link>
+      </Navs>
+      <Navs>
+        <Link to="/Achievements">
+          <Urls>Achievements</Urls>
+        </Link>
+      </Navs>
+      <Navs>
+        <Link to="/Shop">
+          <Urls>Shop</Urls>
+        </Link>
+      </Navs>
     </Bar>
   );
 };

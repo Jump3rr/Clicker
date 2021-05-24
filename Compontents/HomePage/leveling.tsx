@@ -1,34 +1,30 @@
-import React, { FC, useState } from "react";
-import { levelUp } from "../../Actions/levelActions";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-//import {  } from "react-redux";
+import React, { FC, useEffect } from "react";
 import { IState } from "../reducers";
 import { ICounterReducer } from "../reducers/counterReducer";
+import { useDispatch, useSelector } from "react-redux";
 import { ILevelReducer } from "../reducers/levelReducer";
-import { useSelector } from "react-redux";
+import { IRequiredReducer } from "../reducers/requiredReducer";
+import { increaseRequirement } from "../../Actions/requiredActions";
+import { levelUp } from "../../Actions/levelActions";
 
 export const Leveling: FC = () => {
-  const { count } = useSelector<IState, ICounterReducer>((globalState) => ({
-    ...globalState.counter
+  const { count, toNextLevel } = useSelector<
+    IState,
+    ICounterReducer & ILevelReducer & IRequiredReducer
+  >((globalState) => ({
+    ...globalState.counter,
+    ...globalState.toNextLevel
   }));
-  const [level, levelUp] = useState(1);
-  const [required, changeRequire] = useState(10);
 
-  const handleLevel = () => {
-    levelUp((prevState) => prevState + 1);
-  };
-  const handleRequired = () => {
-    changeRequire((prevState) => prevState * 2);
-  };
-  if (count === required) {
-    handleRequired();
-    handleLevel();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    increaseRequirement();
+    levelUp();
+  }, [count]);
+
+  if (count !== toNextLevel) {
+    return <></>;
+  } else {
+    return dispatch(increaseRequirement()), dispatch(levelUp()), (<></>);
   }
-
-  return (
-    <>
-      <span>Level: {level}</span>
-    </>
-  );
 };

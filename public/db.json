@@ -33,12 +33,18 @@
     "title": "Octet",
     "description": "Reach 256 cookies",
     "required": 256,
-    "achieved": 1
+    "achieved": 0
   },
   {
     "title": "Real Spartan",
     "description": "Reach 300 cookies",
     "required": 300,
+    "achieved": 0
+  },
+  {
+    "title": "Not found",
+    "description": "Reach 404 cookies",
+    "required": 404,
     "achieved": 0
   },
   {
@@ -54,57 +60,27 @@
     "achieved": 0
   },
   {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
+    "title": "10K",
+    "description": "Reach 10 000 cookies",
+    "required": 10000,
+    "achieved": 0
   },
   {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
+    "title": "Not bad",
+    "description": "Reach 100 000 cookies",
+    "required": 100000,
+    "achieved": 0
   },
   {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
+    "title": "MILLION",
+    "description": "Reach 1 000 000 cookies",
+    "required": 1000000,
+    "achieved": 0
   },
   {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
-  },
-  {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
-  },
-  {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
-  },
-  {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
-  },
-  {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
-  },
-  {
-    "title": "tytul",
-    "description": "opis",
-    "required": 2,
-    "achieved": 1
+    "title": "why?",
+    "description": "Reach 100 000 000 cookies",
+    "required": 100000000,
+    "achieved": 0
   }
 ]

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Cookie from "./cookie";
 import { Counter } from "./Counter";
 import styled from "styled-components";
+import { Leveling } from "./leveling";
 
 const MainWrapper = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ export const HomePage: FC = () => {
   return (
     <MainWrapper>
       <CookieStyled />
+      <Leveling />
       <CounterStyled />
     </MainWrapper>
   );

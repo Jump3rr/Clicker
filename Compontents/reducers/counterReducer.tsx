@@ -1,28 +1,29 @@
-// export default (state = 0, action) => {
-//   switch (action.type) {
-//     case "INCREMENT":
-//       return state + 1;
-//     default:
-//       return state;
-//   }
-// };
+import ActionTypes from "../../Actions/counterTypes";
 
-import ActionTypes from "../../Actions";
 const initialState = {
-  count: 0
+  count: -1
+};
+const initialLvlState = {
+  level: 0
+};
+const initialToNextLvlState = {
+  toNextLevel: 5
 };
 
 export interface ICounterReducer {
   count: number;
+  level: number;
+  toNextLevel: number;
 }
-export interface ICounterClicker {}
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.INCREASE_COUNT:
       return { count: state.count + 1 };
-    case ActionTypes.GET_COUNT:
-      return { count: state.count };
+    // case ActionTypes.INCREASE_REQUIREMENT:
+    //   return { toNextLevel: tstate.toNextLevel * 2 };
+    // case ActionTypes.LEVEL_UP:
+    //   return { level: lstate.level + 1 };
     default:
       return state;
   }

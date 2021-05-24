@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { IState } from "../reducers";
 import { ICounterReducer } from "../reducers/counterReducer";
+import { Leveling } from "./leveling";
+import { ILevelReducer } from "../reducers/levelReducer";
+import { IRequiredReducer } from "../reducers/requiredReducer";
 
 const CookieCounter = styled.div`
   width: 55%;
@@ -35,14 +38,19 @@ const Level = styled.div`
 `;
 
 export const Counter: FC = () => {
-  const { count } = useSelector<IState, ICounterReducer>((globalState) => ({
-    ...globalState.counter
+  const { count, level, toNextLevel } = useSelector<
+    IState,
+    ICounterReducer & ILevelReducer & IRequiredReducer
+  >((globalState) => ({
+    ...globalState.counter,
+    ...globalState.level,
+    ...globalState.toNextLevel
   }));
 
   return (
     <CookieCounter>
       <CounterDiv>Cookies: {count}</CounterDiv>
-      <Level>Level:</Level>
+      <Level>Level: {level}</Level>
     </CookieCounter>
   );
 };

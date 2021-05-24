@@ -34,7 +34,6 @@ const CookieImg = styled.img`
   }
 `;
 
-// export const Cookie: FC = () => {
 class Cookie extends Component {
   static mapStateToProps = (state) => {
     return {
