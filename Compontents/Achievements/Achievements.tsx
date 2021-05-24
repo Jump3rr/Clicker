@@ -40,7 +40,6 @@ const AchievementLocked = styled.div`
   border-style: solid;
   border-width: 2px;
   border-radius: 10px;
-  opacity: 0.3;
   text-align: center;
   background-color: rgba(255, 0, 0, 0.3);
 `;
@@ -54,7 +53,7 @@ const Title = styled.div`
 const Description = styled.div`
   width: 100%;
   font-size: 80%;
-  transform: translateY(100%);
+  margin-top: 8vh;
   height: 30px;
 `;
 const AchievementImg = styled.img`
