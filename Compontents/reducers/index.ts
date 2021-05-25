@@ -4,12 +4,14 @@ import counter, { ICounterReducer } from "./counterReducer";
 import achievements, { IAchievementsReducer } from "./achievementsReducer";
 import level, { ILevelReducer } from "./levelReducer";
 import toNextLevel, { IRequiredReducer } from "./requiredReducer";
+import shopItems, { IShopReducer } from "./shopReducer";
 
 export default combineReducers({
   counter,
   achievements,
   level,
-  toNextLevel
+  toNextLevel,
+  shopItems
 });
 
 export interface IState {
@@ -17,4 +19,5 @@ export interface IState {
   achievements: IAchievementsReducer;
   level: ILevelReducer;
   toNextLevel: IRequiredReducer;
+  shopItems: IShopReducer;
 }

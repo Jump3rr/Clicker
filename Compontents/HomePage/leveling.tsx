@@ -23,13 +23,14 @@ export const Leveling: FC = () => {
     localStorage.setItem("click_count", JSON.stringify(count));
   }, [count]);
 
-  const localData = localStorage.getItem("click_count");
-  console.log(JSON.parse(localData));
-  console.log(typeof JSON.parse(localData));
+  // const localData = localStorage.getItem("click_count");
+  // console.log(JSON.parse(localData));
+  // console.log(typeof JSON.parse(localData));
 
   if (count < toNextLevel) {
     return <></>;
   } else {
+    // return dispatch(increaseRequirement()), dispatch(levelUp()), (<></>);
     return dispatch(increaseRequirement()), dispatch(levelUp()), (<></>);
   }
 };
