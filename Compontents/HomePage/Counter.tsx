@@ -69,12 +69,13 @@ const ResetButton = styled.button`
 `;
 
 export const Counter: FC = () => {
-  const { count, level } = useSelector<IState, ICounterReducer & ILevelReducer>(
-    (globalState) => ({
-      ...globalState.counter,
-      ...globalState.level
-    })
-  );
+  const { clickedCount, level } = useSelector<
+    IState,
+    ICounterReducer & ILevelReducer
+  >((globalState) => ({
+    ...globalState.counter,
+    ...globalState.level
+  }));
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -83,7 +84,7 @@ export const Counter: FC = () => {
 
   return (
     <CookieCounter>
-      <CounterDiv>Cookies: {count}</CounterDiv>
+      <CounterDiv>Cookies: {clickedCount}</CounterDiv>
       <Level>Level: {level}</Level>
       <ResetButton onClick={() => dispatch(resetProgress())}>RESET</ResetButton>
     </CookieCounter>

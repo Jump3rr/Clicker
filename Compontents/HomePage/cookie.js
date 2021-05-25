@@ -37,7 +37,7 @@ const CookieImg = styled.img`
 class Cookie extends Component {
   static mapStateToProps = (state) => {
     return {
-      count: state.count
+      clickedCount: state.clickedCount
     };
   };
   static mapDispatchToProps = (dispatch) => {

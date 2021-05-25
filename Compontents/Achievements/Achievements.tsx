@@ -65,7 +65,7 @@ const AchievementImg = styled.img`
 `;
 
 export const Achievements: FC = () => {
-  const { achievementsList, count } = useSelector<
+  const { achievementsList, clickedCount } = useSelector<
     IState,
     IAchievementsReducer & ICounterReducer
   >((globalState) => ({
@@ -78,7 +78,7 @@ export const Achievements: FC = () => {
       <Showcase>
         {achievementsList?.length > 0 &&
           achievementsList.map((element) => {
-            if (count >= element.required) {
+            if (clickedCount >= element.required) {
               element.achieved = true;
             }
             if (element.achieved) {
@@ -97,7 +97,7 @@ export const Achievements: FC = () => {
                   <div>{element.title}</div>
                   <Description>{element.description}</Description>
                   <Description>
-                    {count} / {element.required}
+                    {clickedCount} / {element.required}
                   </Description>
                 </AchievementLocked>
               ];

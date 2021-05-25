@@ -9,6 +9,7 @@ import { getAchievements } from "./../Actions/achievementsActions";
 import { increaseCount } from "./../Actions/actionCounter";
 import { levelUp } from "./../Actions/levelActions";
 import { increaseRequirement } from "./../Actions/requiredActions";
+import { Bots } from "../Actions/increasePerSecond";
 
 type GetAchievements = ReturnType<typeof getAchievements>;
 type IncreaseCount = ReturnType<typeof increaseCount>;
@@ -38,6 +39,7 @@ export const MainPage: FC = () => {
           <Shop />
         </Route>
       </Switch>
+      <Bots />
     </Router>
   );
 };

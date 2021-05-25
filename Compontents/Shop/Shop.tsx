@@ -8,7 +8,22 @@ import { IRequiredReducer } from "../reducers/requiredReducer";
 import { IShopReducer } from "../reducers/shopReducer";
 import shopReducer from "../reducers/shopReducer";
 // import { ShopActions } from "./ShopActions";
-import { increaseFarm, increaseGrandma } from "../../Actions/shopActions";
+import {
+  increaseFarm,
+  increaseGrandma,
+  increaseMine,
+  increaseFactory,
+  increaseCity,
+  increaseCountry
+} from "../../Actions/shopActions";
+import {
+  grandmaBought,
+  farmBought,
+  mineBought,
+  factoryBought,
+  cityBought,
+  countryBought
+} from "../../Actions/actionCounter";
 
 const MainWrapper = styled.div`
   display: flex;
@@ -66,10 +81,15 @@ const BuyButton = styled.button`
 `;
 
 export const Shop: FC = () => {
-  const { count, grandma, farm, mine, factory, city, country } = useSelector<
-    IState,
-    ICounterReducer & IShopReducer
-  >((globalState) => ({
+  const {
+    clickedCount,
+    grandma,
+    farm,
+    mine,
+    factory,
+    city,
+    country
+  } = useSelector<IState, ICounterReducer & IShopReducer>((globalState) => ({
     ...globalState.counter,
     ...globalState.shopItems,
     ...globalState.shopItems.grandma,
@@ -80,95 +100,71 @@ export const Shop: FC = () => {
     ...globalState.shopItems.country
   }));
 
-  // function CanBeBuy(required: number) {
-  //   if (count > required) {
-  //     return <BuyButton>Buy</BuyButton>;
-  //   }
-  // }
-  // const [grandma, setGrandmaCount] = useState({
-  //   name: "Grandma",
-  //   count: 0,
-  //   price: 10,
-  //   perSec: 1
-  // });
-  // const [farm, setFarmCount] = useState({
-  //   name: "Farm",
-  //   count: 0,
-  //   price: 100,
-  //   perSec: 10
-  // });
-  // const [mine, setMineCount] = useState({
-  //   name: "Mine",
-  //   count: 0,
-  //   price: 500,
-  //   perSec: 50
-  // });
-  // const [factory, setFactoryCount] = useState({
-  //   name: "Factory",
-  //   count: 0,
-  //   price: 1000,
-  //   perSec: 100
-  // });
-  // const [city, setCityCount] = useState({
-  //   name: "City",
-  //   count: 0,
-  //   price: 10000,
-  //   perSec: 1000
-  // });
-  // const [country, setCountryCount] = useState({
-  //   name: "Country",
-  //   count: 0,
-  //   price: 100000,
-  //   perSec: 10000
-  // });
-
-  // const handleClickGrandma = () => {
-  //   setGrandmaCount((prevState) => ({
-  //     ...prevState,
-  //     count: grandma.count + 1
-  //   }));
-  // };
-  // const handleClickFarm = () => {
-  //   setFarmCount((prevState) => ({
-  //     ...prevState,
-  //     count: farm.count + 1
-  //   }));
-  // };
-  // const handleClickMine = () => {
-  //   setMineCount((prevState) => ({
-  //     ...prevState,
-  //     count: mine.count + 1
-  //   }));
-  // };
-  // const handleClickFactory = () => {
-  //   setFactoryCount((prevState) => ({
-  //     ...prevState,
-  //     count: factory.count + 1
-  //   }));
-  // };
-  // const handleClickCity = () => {
-  //   setCityCount((prevState) => ({
-  //     ...prevState,
-  //     count: city.count + 1
-  //   }));
-  // };
-  // const handleClickCountry = () => {
-  //   setCountryCount((prevState) => ({
-  //     ...prevState,
-  //     count: country.count + 1
-  //   }));
-  // };
   const dispatch = useDispatch();
   useEffect(() => {
-    increaseGrandma();
-    // localStorage.setItem("click_count", JSON.stringify(count));
-  }, []);
+    localStorage.setItem("grandma", JSON.stringify(grandma));
+    localStorage.setItem("farm", JSON.stringify(farm));
+    localStorage.setItem("mine", JSON.stringify(mine));
+    localStorage.setItem("factory", JSON.stringify(factory));
+    localStorage.setItem("city", JSON.stringify(city));
+    localStorage.setItem("country", JSON.stringify(country));
+    localStorage.setItem("click_count", JSON.stringify(clickedCount));
+  }, [grandma, farm, mine, factory, city, country, clickedCount]);
   const incGrand = () => {
-    dispatch(increaseGrandma());
+    dispatch(increaseGrandma()), dispatch(grandmaBought());
   };
   const incFarm = () => {
-    dispatch(increaseFarm());
+    dispatch(increaseFarm()), dispatch(farmBought());
   };
+  const incMine = () => {
+    dispatch(increaseMine()), dispatch(mineBought());
+  };
+  const incFactory = () => {
+    dispatch(increaseFactory()), dispatch(factoryBought());
+  };
+  const incCity = () => {
+    dispatch(increaseCity()), dispatch(cityBought());
+  };
+  const incCountry = () => {
+    dispatch(increaseCountry()), dispatch(countryBought());
+  };
+
+  function CanBeBuy(withOne: number, required: number) {
+    switch (withOne) {
+      case 0:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incGrand}>Buy</BuyButton>;
+        }
+        break;
+      case 1:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incFarm}>Buy</BuyButton>;
+        }
+        break;
+      case 2:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incMine}>Buy</BuyButton>;
+        }
+        break;
+      case 3:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incFactory}>Buy</BuyButton>;
+        }
+        break;
+      case 4:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incCity}>Buy</BuyButton>;
+        }
+        break;
+      case 5:
+        if (clickedCount >= required) {
+          return <BuyButton onClick={incCountry}>Buy</BuyButton>;
+        }
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <MainWrapper>
@@ -176,8 +172,7 @@ export const Shop: FC = () => {
         <OneItem>
           <ItemTitle>
             {grandma.name}
-            <button onClick={incGrand}>abc</button>
-            {/* {CanBeBuy(grandma.price)} */}
+            <div>{CanBeBuy(0, 10)}</div>
           </ItemTitle>
           <ItemDescription>
             <div>Cost: {grandma.price}</div>
@@ -186,8 +181,10 @@ export const Shop: FC = () => {
           <OwnedNbr>{grandma.count}</OwnedNbr>
         </OneItem>
         <OneItem>
-          <ItemTitle>{farm.name}</ItemTitle>
-          <button onClick={incFarm}>abc</button>
+          <ItemTitle>
+            {farm.name}
+            <div>{CanBeBuy(1, 100)}</div>
+          </ItemTitle>
           <ItemDescription>
             <div>Cost: {farm.price}</div>
             <div>Production per second: {farm.perSec}</div>
@@ -195,7 +192,10 @@ export const Shop: FC = () => {
           <OwnedNbr>{farm.count}</OwnedNbr>
         </OneItem>
         <OneItem>
-          <ItemTitle>{mine.name}</ItemTitle>
+          <ItemTitle>
+            {mine.name}
+            <div>{CanBeBuy(2, 500)}</div>
+          </ItemTitle>
           <ItemDescription>
             <div>Cost: {mine.price}</div>
             <div>Production per second: {mine.perSec}</div>
@@ -203,7 +203,10 @@ export const Shop: FC = () => {
           <OwnedNbr>{mine.count}</OwnedNbr>
         </OneItem>
         <OneItem>
-          <ItemTitle>{factory.name}</ItemTitle>
+          <ItemTitle>
+            {factory.name}
+            <div>{CanBeBuy(3, 1000)}</div>
+          </ItemTitle>
           <ItemDescription>
             <div>Cost: {factory.price}</div>
             <div>Production per second: {factory.perSec}</div>
@@ -211,7 +214,10 @@ export const Shop: FC = () => {
           <OwnedNbr>{factory.count}</OwnedNbr>
         </OneItem>
         <OneItem>
-          <ItemTitle>{city.name}</ItemTitle>
+          <ItemTitle>
+            {city.name}
+            <div>{CanBeBuy(4, 10000)}</div>
+          </ItemTitle>
           <ItemDescription>
             <div>Cost: {city.price}</div>
             <div>Production per second: {city.perSec}</div>
@@ -219,7 +225,10 @@ export const Shop: FC = () => {
           <OwnedNbr>{city.count}</OwnedNbr>
         </OneItem>
         <OneItem>
-          <ItemTitle>{country.name}</ItemTitle>
+          <ItemTitle>
+            {country.name}
+            <div>{CanBeBuy(5, 100000)}</div>
+          </ItemTitle>
           <ItemDescription>
             <div>Cost: {country.price}</div>
             <div>Production per second: {country.perSec}</div>

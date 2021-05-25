@@ -8,7 +8,7 @@ import { increaseRequirement } from "../../Actions/requiredActions";
 import { levelUp } from "../../Actions/levelActions";
 
 export const Leveling: FC = () => {
-  const { count, toNextLevel } = useSelector<
+  const { clickedCount, toNextLevel } = useSelector<
     IState,
     ICounterReducer & IRequiredReducer
   >((globalState) => ({
@@ -20,14 +20,14 @@ export const Leveling: FC = () => {
   useEffect(() => {
     increaseRequirement();
     levelUp();
-    localStorage.setItem("click_count", JSON.stringify(count));
-  }, [count]);
+    localStorage.setItem("click_count", JSON.stringify(clickedCount));
+  }, [clickedCount]);
 
   // const localData = localStorage.getItem("click_count");
   // console.log(JSON.parse(localData));
   // console.log(typeof JSON.parse(localData));
 
-  if (count < toNextLevel) {
+  if (clickedCount < toNextLevel) {
     return <></>;
   } else {
     // return dispatch(increaseRequirement()), dispatch(levelUp()), (<></>);
