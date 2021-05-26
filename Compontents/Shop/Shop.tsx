@@ -1,13 +1,10 @@
-import react, { FC, useEffect } from "react";
+import { FC, useEffect } from "react";
 import styled from "styled-components";
-import { IShop, ShopItems } from "./IShop";
+import { Colors } from "../../styledHelpers/colors";
 import { IState } from "../reducers";
 import { ICounterReducer } from "../reducers/counterReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { IRequiredReducer } from "../reducers/requiredReducer";
 import { IShopReducer } from "../reducers/shopReducer";
-import shopReducer from "../reducers/shopReducer";
-// import { ShopActions } from "./ShopActions";
 import {
   increaseFarm,
   increaseGrandma,
@@ -41,7 +38,7 @@ const ItemSection = styled.div`
 `;
 const OneItem = styled.div`
   width: 100%;
-  background-color: blue;
+  background-color: ${Colors.shop};
   display: flex;
   flex-direction: repeat(auto-fill, 30%);
   justify-content: space-between;
@@ -54,29 +51,29 @@ const ItemTitle = styled.div`
   text-align: left;
 `;
 const ItemDescription = styled.div`
-  color: grey;
+  color: ${Colors.lightgrey};
   font-size: 3.5vw;
   text-align: center;
 `;
 const OwnedNbr = styled.div`
-  color: white;
+  color: ${Colors.white};
   font-size: 5vw;
   font-weight: bold;
   text-align: right;
 `;
 const BuyButton = styled.button`
   padding: 0.15em 0.6em;
-  border: 0.1em solid #ffffff;
+  border: 0.1em solid ${Colors.white};
   margin: 0 0.3em 0.3em 0.3em;
   border-radius: 0.12em;
   font-size: 2.7vw;
-  color: white;
+  color: ${Colors.white};
   background-color: transparent;
   text-align: center;
   transition: all 0.2s;
   &:hover {
-    color: #000000;
-    background-color: #ffffff;
+    color: ${Colors.black};
+    background-color: ${Colors.white};
   }
 `;
 

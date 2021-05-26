@@ -10,6 +10,8 @@ import { increaseCount } from "./../Actions/actionCounter";
 import { levelUp } from "./../Actions/levelActions";
 import { increaseRequirement } from "./../Actions/requiredActions";
 import { Bots } from "../Actions/increasePerSecond";
+import { RenderNotifications } from "../tools/renderNotification";
+import { Leveling } from "../Compontents/HomePage/leveling";
 
 type GetAchievements = ReturnType<typeof getAchievements>;
 type IncreaseCount = ReturnType<typeof increaseCount>;
@@ -40,6 +42,7 @@ export const MainPage: FC = () => {
         </Route>
       </Switch>
       <Bots />
+      <RenderNotifications />
     </Router>
   );
 };
