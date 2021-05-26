@@ -39,6 +39,5 @@ export const Bots: FC = () => {
     return () => clearInterval(interval);
   }, [grandma, farm, mine, factory, city, country]);
 
-  console.log(perSec);
   return null;
 };

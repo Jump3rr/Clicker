@@ -18,3 +18,21 @@ export const increaseCity = () => ({
 export const increaseCountry = () => ({
   type: ActionTypes.COUNTRY_INCREASE
 });
+export const resetGrandma = () => ({
+  type: ActionTypes.GRANDMA_RESET
+});
+export const resetFarm = () => ({
+  type: ActionTypes.FARM_RESET
+});
+export const resetMine = () => ({
+  type: ActionTypes.MINE_RESET
+});
+export const resetFactory = () => ({
+  type: ActionTypes.FACTORY_RESET
+});
+export const resetCity = () => ({
+  type: ActionTypes.CITY_RESET
+});
+export const resetCountry = () => ({
+  type: ActionTypes.COUNTRY_RESET
+});

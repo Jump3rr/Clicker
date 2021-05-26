@@ -1,15 +1,15 @@
 import { FC } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Cookie from "./cookie";
 import { Counter } from "./Counter";
 import styled from "styled-components";
 import { Leveling } from "./leveling";
+import { Colors } from "../../styledHelpers/colors";
 
 const MainWrapper = styled.div`
   display: flex;
   margin-top: 12vh;
   flex-flow: row;
+  background: ${Colors.background};
 
   @media (max-width: 768px) {
     display: flex;
@@ -31,8 +31,8 @@ export const HomePage: FC = () => {
   return (
     <MainWrapper>
       <CookieStyled />
-      <Leveling />
       <CounterStyled />
+      <Leveling />
     </MainWrapper>
   );
 };

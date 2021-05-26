@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import ActionTypes from "../../Actions/counterTypes";
 
 const initialState = {

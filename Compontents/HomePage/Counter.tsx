@@ -4,20 +4,26 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { IState } from "../reducers";
 import { ICounterReducer } from "../reducers/counterReducer";
-// import { Leveling } from "./leveling";
 import { ILevelReducer } from "../reducers/levelReducer";
-import { IRequiredReducer } from "../reducers/requiredReducer";
-import { increaseCount } from "../../Actions/actionCounter";
 import { resetProgress } from "../../Actions/actionCounter";
-
-import { increaseRequirement } from "../../Actions/requiredActions";
-import { levelUp } from "../../Actions/levelActions";
+import { resetLevel } from "../../Actions/levelActions";
+import { IRequiredReducer } from "../reducers/requiredReducer";
+import { IShopReducer } from "../reducers/shopReducer";
+import {
+  resetGrandma,
+  resetFarm,
+  resetMine,
+  resetFactory,
+  resetCity,
+  resetCountry
+} from "../../Actions/shopActions";
 
 const CookieCounter = styled.div`
   width: 55%;
   display: block;
   justify-content: right;
   background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
   height: auto;
   margin-top: 3vh;
   margin-left: 5%;
@@ -52,14 +58,16 @@ const ResetButton = styled.button`
     rgba(0, 212, 255, 1) 100%
   );
   border-radius: 50%;
-  border-color: white;
-  color: white;
+  border-color: ${Colors.white};
+  color: ${Colors.white};
   font-weight: bold;
   height: 12vh;
   width: 12vh;
+  margin-top: 5vh;
+  font-size: 2vh;
   &:hover {
-    border-color: red;
-    color: grey;
+    border-color: ${Colors.red};
+    color: ${Colors.lightgrey};
   }
   &:active {
     border-style: groove;
@@ -69,24 +77,70 @@ const ResetButton = styled.button`
 `;
 
 export const Counter: FC = () => {
-  const { clickedCount, level } = useSelector<
+  const {
+    clickedCount,
+    grandma,
+    farm,
+    mine,
+    factory,
+    city,
+    country,
+    level,
+    toNextLevel
+  } = useSelector<
     IState,
-    ICounterReducer & ILevelReducer
+    ICounterReducer & IShopReducer & ILevelReducer & IRequiredReducer
   >((globalState) => ({
     ...globalState.counter,
-    ...globalState.level
+    ...globalState.shopItems,
+    ...globalState.shopItems.grandma,
+    ...globalState.shopItems.farm,
+    ...globalState.shopItems.mine,
+    ...globalState.shopItems.factory,
+    ...globalState.shopItems.city,
+    ...globalState.shopItems.country,
+    ...globalState.level,
+    ...globalState.toNextLevel
   }));
 
   const dispatch = useDispatch();
   useEffect(() => {
     resetProgress();
-  }, []);
+    resetLevel();
+    resetGrandma();
+    resetFarm();
+    resetMine();
+    resetFactory();
+    resetCity();
+    resetCountry();
+
+    localStorage.setItem("grandma", JSON.stringify(grandma));
+    localStorage.setItem("farm", JSON.stringify(farm));
+    localStorage.setItem("mine", JSON.stringify(mine));
+    localStorage.setItem("factory", JSON.stringify(factory));
+    localStorage.setItem("city", JSON.stringify(city));
+    localStorage.setItem("country", JSON.stringify(country));
+    localStorage.setItem("click_count", JSON.stringify(clickedCount));
+  }, [grandma, farm, mine, factory, city, country, clickedCount]);
 
   return (
     <CookieCounter>
       <CounterDiv>Cookies: {clickedCount}</CounterDiv>
       <Level>Level: {level}</Level>
-      <ResetButton onClick={() => dispatch(resetProgress())}>RESET</ResetButton>
+      <ResetButton
+        onClick={() => {
+          dispatch(resetProgress()),
+            dispatch(resetLevel()),
+            dispatch(resetGrandma()),
+            dispatch(resetFarm()),
+            dispatch(resetMine()),
+            dispatch(resetFactory()),
+            dispatch(resetCity()),
+            dispatch(resetCountry());
+        }}
+      >
+        RESET
+      </ResetButton>
     </CookieCounter>
   );
 };

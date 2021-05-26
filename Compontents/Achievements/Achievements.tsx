@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { IState } from "../reducers";
@@ -104,7 +104,6 @@ export const Achievements: FC = () => {
             }
           })}
       </Showcase>
-      {console.log({ achievementsList })}
     </MainWrapper>
   );
 };

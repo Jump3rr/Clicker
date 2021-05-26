@@ -1,4 +1,4 @@
-import React, { FC, Component } from "react";
+import React, { Component } from "react";
 import { Colors } from "../../styledHelpers/colors";
 import styled from "styled-components";
 import { increaseCount } from "../../Actions/actionCounter";

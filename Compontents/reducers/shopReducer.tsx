@@ -170,6 +170,72 @@ export default (state = initialState, action) => {
           perSec: state.country.perSec + 10000
         }
       };
+    case ActionTypes.GRANDMA_RESET:
+      console.log(state.grandma.count);
+      return {
+        ...state,
+        grandma: {
+          name: state.grandma.name,
+          count: state.grandma.count = 0,
+          price: state.grandma.price,
+          perSec: state.grandma.perSec = 0
+        }
+      };
+    case ActionTypes.FARM_RESET:
+      console.log(state.farm.count);
+      return {
+        ...state,
+        farm: {
+          name: state.farm.name,
+          count: state.farm.count = 0,
+          price: state.farm.price,
+          perSec: state.farm.perSec = 0
+        }
+      };
+    case ActionTypes.MINE_RESET:
+      console.log(state.mine.count);
+      return {
+        ...state,
+        mine: {
+          name: state.mine.name,
+          count: state.mine.count = 0,
+          price: state.mine.price,
+          perSec: state.mine.perSec = 0
+        }
+      };
+    case ActionTypes.FACTORY_RESET:
+      console.log(state.factory.count);
+      return {
+        ...state,
+        factory: {
+          name: state.factory.name,
+          count: state.factory.count = 0,
+          price: state.factory.price,
+          perSec: state.factory.perSec = 0
+        }
+      };
+    case ActionTypes.CITY_RESET:
+      console.log(state.city.count);
+      return {
+        ...state,
+        city: {
+          name: state.city.name,
+          count: state.city.count = 0,
+          price: state.city.price,
+          perSec: state.city.perSec = 0
+        }
+      };
+    case ActionTypes.COUNTRY_RESET:
+      console.log(state.country.count);
+      return {
+        ...state,
+        country: {
+          name: state.country.name,
+          count: state.country.count = 0,
+          price: state.country.price,
+          perSec: state.country.perSec = 0
+        }
+      };
     default:
       return state;
   }
